@@ -1,0 +1,86 @@
+@startuml use_case_diagram
+title
+  <b>Lab 1: Requirements Engineering & UML Use-Case Modelling</b>
+  Problem Statement #06: Alumni Mentorship & Mock Interview Platform
+  Name: <b>HEMANT RAM NELAPATI</b> | SRN: <b>PES2UG24CS192</b>
+end title
+
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam handwritten false
+skinparam monochrome true
+
+skinparam actor {
+    BackgroundColor #FFFFFF
+    BorderColor #000000
+    FontName "Segoe UI"
+    FontSize 12
+    FontStyle bold
+    FontColor #000000
+}
+
+skinparam usecase {
+    BackgroundColor #FFFFFF
+    BorderColor #000000
+    BorderThickness 1.5
+    FontName "Segoe UI"
+    FontSize 11
+    FontColor #000000
+    ArrowColor #000000
+    ArrowThickness 1.2
+}
+
+skinparam rectangle {
+    BackgroundColor #FFFFFF
+    BorderColor #000000
+    BorderThickness 2
+    FontName "Segoe UI"
+    FontSize 13
+    FontStyle bold
+    FontColor #000000
+}
+
+skinparam note {
+    BackgroundColor #FFFFFF
+    BorderColor #000000
+    FontColor #000000
+}
+
+actor "Student Mentee" as Student
+actor "Alumni Mentor" as Mentor
+actor "Platform Administrator" as Admin
+
+rectangle "Alumni Mentorship & Mock Interview Platform" {
+    usecase "UC-01: Match & Recommend Mentors" as UC1
+    usecase "UC-02: Book Mentorship Session" as UC2
+    usecase "UC-03: Manage Availability Calendar" as UC3
+    usecase "UC-04: Conduct Mock Interview" as UC4
+    usecase "UC-05: Submit Evaluation Scorecard" as UC5
+    usecase "UC-06: Verify Alumni Profile" as UC6
+    usecase "UC-07: Validate Slot Availability" as UC7
+
+    ' Actor Associations
+    Student --> UC1
+    Student --> UC2
+    Student --> UC4
+    
+    Mentor --> UC3
+    Mentor --> UC4
+    Mentor --> UC5
+    
+    Admin --> UC6
+
+    ' Mandatory Include Relationship
+    UC2 .> UC7 : <<include>>
+}
+
+note right of UC7
+  <b><<include>> Justification:</b>
+  Booking a session unconditionally
+  requires checking slot availability
+  to prevent double-booking.
+end note
+
+@enduml

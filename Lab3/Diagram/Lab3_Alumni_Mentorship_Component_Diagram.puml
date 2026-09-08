@@ -1,0 +1,145 @@
+@startuml Lab3_Alumni_Mentorship_Component_Diagram
+
+title
+  <b>Lab 3: Component Modelling & Architectural Pattern Selection</b>
+  Alumni Mentorship & Mock Interview Platform
+  <b>HEMANT RAM NELAPATI</b> | SRN: <b>PES2UG24CS192</b>
+  Architecture: <b>Layered (Three-Tier)</b>
+end title
+
+top to bottom direction
+skinparam dpi 200
+
+skinparam monochrome true
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName "Segoe UI"
+skinparam defaultFontSize 11
+
+skinparam component {
+    BackgroundColor #FFFFFF
+    BorderColor #000000
+    BorderThickness 1.5
+    FontName "Segoe UI"
+    FontSize 11
+    FontColor #000000
+}
+
+skinparam interface {
+    BackgroundColor #FFFFFF
+    BorderColor #000000
+    FontName "Segoe UI"
+    FontSize 10
+    FontColor #000000
+}
+
+skinparam package {
+    BackgroundColor #FFFFFF
+    BorderColor #000000
+    BorderThickness 1.8
+    FontName "Segoe UI"
+    FontSize 12
+    FontStyle bold
+    FontColor #000000
+}
+
+skinparam note {
+    BackgroundColor #FFFFFF
+    BorderColor #000000
+    FontColor #000000
+    FontSize 9
+}
+
+' ============================================================
+' PRESENTATION LAYER (TOP TIER)
+' ============================================================
+package "Presentation Layer" as PL {
+    [Student Mentee\nPortal] as SMP
+    [Alumni Mentor\nPortal] as AMP
+}
+
+' ============================================================
+' BUSINESS LOGIC LAYER (MIDDLE TIER)
+' ============================================================
+package "Business Logic Layer" as BLL {
+    [Authentication &\nUser Management] as AUTH
+    [Mentorship &\nMock Interview\nManagement] as MIM
+    [Notification\nService] as NOTIF
+    
+    interface "INotification" as INotify
+    NOTIF -left- INotify
+    MIM .right.> INotify : <<use>>
+}
+
+' ============================================================
+' DATA LAYER (BOTTOM TIER)
+' ============================================================
+package "Data Layer" as DL {
+    [Database\nAccess] as DB
+}
+
+' ============================================================
+' INTERFACES: PRESENTATION <-> BUSINESS LOGIC
+' ============================================================
+interface "IAuthentication" as IAuth
+interface "IUserProfile" as IProfile
+interface "IMentorshipService" as IMentor
+interface "IInterviewScheduling" as IInterview
+
+' Provided by Business Logic components
+AUTH -up- IAuth
+AUTH -up- IProfile
+MIM -up- IMentor
+MIM -up- IInterview
+
+' Required by Student Mentee Portal
+SMP ..> IAuth : <<use>>
+SMP ..> IProfile : <<use>>
+SMP ..> IMentor : <<use>>
+SMP ..> IInterview : <<use>>
+
+' Required by Alumni Mentor Portal
+AMP ..> IAuth : <<use>>
+AMP ..> IProfile : <<use>>
+AMP ..> IMentor : <<use>>
+AMP ..> IInterview : <<use>>
+
+' ============================================================
+' INTERFACES: BUSINESS LOGIC <-> DATA LAYER
+' ============================================================
+interface "IDataAccess" as IData
+
+' Provided by Data Layer
+DB -up- IData
+
+' Required by Business Logic components
+AUTH ..> IData : <<use>>
+MIM ..> IData : <<use>>
+NOTIF ..> IData : <<use>>
+
+' ============================================================
+' ARCHITECTURAL NOTES
+' ============================================================
+note right of PL
+  Presentation Tier
+  Dedicated role-specific portals:
+  - Student Mentee Portal
+  - Alumni Mentor Portal
+end note
+
+note right of BLL
+  Business Logic Tier
+  Centralized domain services:
+  - Authentication & RBAC
+  - Matching & Mock Interviews
+  - Notification Service
+end note
+
+note right of DL
+  Data Persistence Tier
+  Centralized relational storage
+  ensuring ACID transactional
+  integrity across all records.
+end note
+
+@enduml
