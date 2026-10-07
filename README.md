@@ -1,4 +1,5 @@
-# Software Engineering Laboratory (UE22CS351AA2)
+# Software Engineering Laboratory
+
 **Department of Computer Science and Engineering — PES University**
 
 | Student Information | Details |
