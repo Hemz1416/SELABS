@@ -42,7 +42,7 @@ class NumberedCanvas(canvas.Canvas):
         # Top running header (pages > 1)
         if self._pageNumber > 1:
             self.drawString(
-                40, 755, "PES UNIVERSITY | UE22CS351AA2: SOFTWARE ENGINEERING LAB 5"
+                40, 755, "SE LAB 5: STATIC CODE ANALYSIS (PYLINT, BANDIT, FLAKE8)"
             )
             self.drawRightString(
                 612 - 40, 755, "PES2UG24CS192 — HEMANT RAM NELAPATI"
@@ -171,41 +171,21 @@ def build_pdf(filename="PES2UG24CS192_Lab5.pdf"):
     elements = []
 
     # ==================== PAGE 1 ====================
-    # Title & Department
-    elements.append(Paragraph("PES UNIVERSITY", header_title_style))
+    # Title
     elements.append(
         Paragraph(
-            "DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING",
-            ParagraphStyle(
-                "DeptSub",
-                fontName="Helvetica-Bold",
-                fontSize=8.5,
-                leading=11,
-                textColor=colors.HexColor("#475569"),
-                alignment=1,
-            ),
-        )
-    )
-    elements.append(
-        Paragraph(
-            "UE22CS351AA2: Software Engineering Laboratory — 5th Semester",
-            header_sub_style,
-        )
-    )
-    elements.append(
-        Paragraph(
-            "Lab 5 Submission Report: Static Code Analysis (Pylint, Bandit, Flake8)",
+            "Lab 5: Static Code Analysis (Pylint, Bandit, Flake8)",
             ParagraphStyle(
                 "LabTitle",
                 fontName="Helvetica-Bold",
-                fontSize=10.5,
-                leading=13,
-                textColor=colors.HexColor("#D97706"),
+                fontSize=13,
+                leading=16,
+                textColor=colors.HexColor("#0F172A"),
                 alignment=1,
             ),
         )
     )
-    elements.append(Spacer(1, 3))
+    elements.append(Spacer(1, 5))
 
     # Student Metadata Table
     meta_data = [
