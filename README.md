@@ -19,20 +19,40 @@ SELABS/
 ├── README.md
 ├── Lab1/    # Requirements Engineering & UML Use-Case Modelling
 ├── Lab2/    # Agile Project Management & Scrum Sprints in Jira
-└── Lab3/    # Component Modelling & Architectural Pattern Selection
+├── Lab3/    # Component Modelling & Architectural Pattern Selection
+└── Lab5/    # Static Code Analysis (Pylint, Bandit, Flake8)
+    ├── PES2UG24CS192_Lab5.pdf
     ├── README.md
-    ├── PES2UG24CS192_Lab_3.pdf
-    ├── Analysis/
-    │   └── Lab3_Architecture_Analysis.md
-    ├── Diagram/
-    │   ├── Lab3_Alumni_Mentorship_Component_Diagram.puml
-    │   ├── Lab3_Alumni_Mentorship_Component_Diagram.png
-    │   └── Lab3_Alumni_Mentorship_Component_Diagram.pdf
-    └── Documentation/
-        ├── Lab3_Alumni_Mentorship_Architectural_Justification.docx
-        ├── Lab3_Alumni_Mentorship_Architectural_Justification.pdf
-        └── PES2UG24CS192_Lab_3.pdf
+    ├── helpdesk_system.py
+    ├── issues.md
+    ├── reflection.md
+    ├── pylint_report.txt
+    ├── bandit_report.txt
+    └── flake8_report.txt
 ```
+
+---
+
+## Lab 5: Static Code Analysis (Pylint, Bandit, Flake8)
+
+### 1. Overview & Assigned Scenario
+- **Assigned Scenario**: Problem Statement #06 — IT Helpdesk Ticket Allocator (`helpdesk_system.py`)
+- **Reference Script**: `inventory_system.py` (Student Handout Reference)
+- **Scores Achieved**:
+  - **Pylint Score**: **10.00 / 10.00** (Perfect Score — Zero warnings, zero conventions, zero errors)
+  - **Bandit Score**: **0 Vulnerabilities** (Zero High, Medium, or Low severity issues)
+  - **Flake8 Score**: **0 Violations** (100% PEP 8 compliance)
+
+### 2. Lab 5 Deliverables
+- **Official Submission Report (PDF)**: [`PES2UG24CS192_Lab5.pdf`](Lab5/PES2UG24CS192_Lab5.pdf)
+- **Refactored Helpdesk System**: [`helpdesk_system.py`](Lab5/helpdesk_system.py)
+- **Refactored Inventory System**: [`inventory_system.py`](Lab5/inventory_system.py)
+- **Static Analysis Issue Log**: [`issues.md`](Lab5/issues.md)
+- **Reflection & Answers**: [`reflection.md`](Lab5/reflection.md)
+- **Verification Reports**:
+  - Pylint Report: [`pylint_report.txt`](Lab5/pylint_report.txt)
+  - Bandit Report: [`bandit_report.txt`](Lab5/bandit_report.txt)
+  - Flake8 Report: [`flake8_report.txt`](Lab5/flake8_report.txt)
 
 ---
 
